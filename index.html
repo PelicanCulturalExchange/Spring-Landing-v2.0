@@ -1063,8 +1063,7 @@ fbq('track','PageView');
       if (!nombre) { setErr("nombre", "Escribe tu nombre.", form.nombre); bad = bad || form.nombre; faltan.push("nombre"); } else setErr("nombre", "", form.nombre);
       var edadTxt = form.edad.value.trim(), edadN = parseInt(edadTxt, 10), uni = form.universidad.value.trim().replace(/\s+/g, " ");
       if (!edadTxt) { setErr("edad", "Escribe tu edad.", form.edad); bad = bad || form.edad; faltan.push("edad"); }
-      else if (isNaN(edadN) || edadN < 18 || edadN > 26) { setErr("edad", "Este programa es solo para jóvenes de 18 a 26 años.", form.edad); bad = bad || form.edad; faltan.push("edad_fuera"); ev("FormEdadFuera", { edad: String(edadTxt).slice(0, 2), formulario: SRC }); }
-      else setErr("edad", "", form.edad);
+      else { setErr("edad", "", form.edad); if (isNaN(edadN) || edadN < 18 || edadN > 26) ev("FormEdadFuera", { edad: String(edadTxt).slice(0, 2), formulario: SRC }); }
       if (uni.length < 2) { setErr("uni", "Escribe el nombre de tu universidad.", form.universidad); bad = bad || form.universidad; faltan.push("universidad"); } else setErr("uni", "", form.universidad);
       if (!/\d/.test(tel)) { setErr("tel", "Escribe tu número de celular.", form.whatsapp); bad = bad || form.whatsapp; faltan.push("celular"); } else setErr("tel", "", form.whatsapp);
       if (!form.consent.checked) { setErr("acepta", "Marca la casilla para que podamos contactarte."); bad = bad || form.consent; faltan.push("acepta"); } else setErr("acepta", "");
