@@ -709,6 +709,9 @@ footer small { opacity: .75; font-size: 13px; }
 .fhead p.ftitle { font-size: 26px; font-weight: 800; color: #fff; max-width: none; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
 .ok p.q-title { font-size: 28px; font-weight: 700; color: inherit; max-width: none; line-height: 1.1; letter-spacing: -0.02em; margin: 0; }
 
+/* presencial sin elegir */
+.campo.mal .seg span { border-color: #c2410c; }
+
 @media (max-width: 700px) { .hero-bg { background-image: url("img/hero-work-and-travel-spring-movil.webp"); } }
 .pie-nav { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 4px 0 10px; font-size: 14px; }
 .pie-nav a { color: var(--mint); text-decoration: none; }
@@ -865,10 +868,12 @@ fbq('track','PageView');
           <div class="fhead"><span class="fbadge">Formulario de registro</span><p class="ftitle">Agenda tu asesoría gratis</p><p>Los campos con <b class="obl">*</b> son obligatorios.</p></div>
           <div class="fbody">
             <fieldset class="campo">
-              <legend>¿Eres estudiante universitario presencial?</legend>
-              <div class="seg"><label><input type="radio" name="presencial" value="si"><span>Sí</span></label><label><input type="radio" name="presencial" value="no"><span>No</span></label></div>
+              <legend>¿Eres estudiante universitario presencial? <b class="obl">*</b></legend>
+              <div class="seg"><label><input type="radio" name="presencial" value="si" aria-describedby="he-pres"><span>Sí</span></label><label><input type="radio" name="presencial" value="no" aria-describedby="he-pres"><span>No</span></label></div>
+              <div class="err" id="he-pres" data-e="presencial" role="alert"></div>
             </fieldset>
-            <div class="campo"><label for="h-edad">Edad</label><input id="h-edad" name="edad" type="text" inputmode="numeric" maxlength="2" placeholder="Ej: 21" autocomplete="off"></div>
+            <div class="campo"><label for="h-edad">Edad <b class="obl">*</b></label><input id="h-edad" name="edad" type="text" inputmode="numeric" maxlength="2" placeholder="Ej: 21" autocomplete="off" aria-required="true" aria-describedby="he-edad"><div class="err" id="he-edad" data-e="edad" role="alert"></div></div>
+            <div class="campo"><label for="h-uni">Universidad <b class="obl">*</b></label><input id="h-uni" name="universidad" type="text" maxlength="80" placeholder="Ej: Universidad Central" autocomplete="off" aria-required="true" aria-describedby="he-uni"><div class="err" id="he-uni" data-e="uni" role="alert"></div></div>
             <div class="campo"><label for="h-nombre">Nombre y apellido <b class="obl">*</b></label><input id="h-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: Camila Andrade" aria-required="true" aria-describedby="he-nombre"><div class="err" id="he-nombre" data-e="nombre" role="alert"></div></div>
             <div class="campo"><label for="h-tel">Celular (WhatsApp) <b class="obl">*</b></label><input id="h-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="09 9999 9999" aria-required="true" aria-describedby="he-tel"><div class="err" id="he-tel" data-e="tel" role="alert"></div></div>
             <div class="hp" aria-hidden="true"><label>Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
@@ -1031,10 +1036,12 @@ fbq('track','PageView');
           <div class="fhead"><span class="fbadge">Formulario de registro</span><h3>Agenda tu asesoría gratis</h3><p>Los campos con <b class="obl">*</b> son obligatorios.</p></div>
           <div class="fbody">
             <fieldset class="campo">
-              <legend>¿Eres estudiante universitario presencial?</legend>
-              <div class="seg"><label><input type="radio" name="presencial" value="si"><span>Sí</span></label><label><input type="radio" name="presencial" value="no"><span>No</span></label></div>
+              <legend>¿Eres estudiante universitario presencial? <b class="obl">*</b></legend>
+              <div class="seg"><label><input type="radio" name="presencial" value="si" aria-describedby="fe-pres"><span>Sí</span></label><label><input type="radio" name="presencial" value="no" aria-describedby="fe-pres"><span>No</span></label></div>
+              <div class="err" id="fe-pres" data-e="presencial" role="alert"></div>
             </fieldset>
-            <div class="campo"><label for="f-edad">Edad</label><input id="f-edad" name="edad" type="text" inputmode="numeric" maxlength="2" placeholder="Ej: 21" autocomplete="off"></div>
+            <div class="campo"><label for="f-edad">Edad <b class="obl">*</b></label><input id="f-edad" name="edad" type="text" inputmode="numeric" maxlength="2" placeholder="Ej: 21" autocomplete="off" aria-required="true" aria-describedby="fe-edad"><div class="err" id="fe-edad" data-e="edad" role="alert"></div></div>
+            <div class="campo"><label for="f-uni">Universidad <b class="obl">*</b></label><input id="f-uni" name="universidad" type="text" maxlength="80" placeholder="Ej: Universidad Central" autocomplete="off" aria-required="true" aria-describedby="fe-uni"><div class="err" id="fe-uni" data-e="uni" role="alert"></div></div>
             <div class="campo"><label for="f-nombre">Nombre y apellido <b class="obl">*</b></label><input id="f-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej: Camila Andrade" aria-required="true" aria-describedby="fe-nombre"><div class="err" id="fe-nombre" data-e="nombre" role="alert"></div></div>
             <div class="campo"><label for="f-tel">Celular (WhatsApp) <b class="obl">*</b></label><input id="f-tel" name="whatsapp" type="tel" inputmode="tel" autocomplete="tel" placeholder="09 9999 9999" aria-required="true" aria-describedby="fe-tel"><div class="err" id="fe-tel" data-e="tel" role="alert"></div></div>
             <div class="hp" aria-hidden="true"><label>Web <input type="text" name="web" tabindex="-1" autocomplete="off"></label></div>
@@ -1143,12 +1150,25 @@ fbq('track','PageView');
     ev("CTAClick", { destino: h.slice(0, 60), texto: t });
   }, true);
 
-  /* ---------- formulario (sin filtros: solo nombre, celular y aceptación son obligatorios) ---------- */
+  /* ---------- formulario (todos los campos son obligatorios; presencial: elegir Sí o No) ---------- */
   [].forEach.call(document.querySelectorAll("form.formu"), function (form) {
     var SRC = form.getAttribute("data-src") || "spring";
     var box = form.parentNode, res = box.querySelector(".fres");
     var started = 0, hechos = {}, busy = false;
-    var ORDEN = { presencial: 1, edad: 2, nombre: 3, celular: 4, acepta: 5 };
+    var ORDEN = { presencial: 1, edad: 2, universidad: 3, nombre: 4, celular: 5, acepta: 6 };
+    var MSG = {
+      presencial: "Selecciona una opción para enviar el formulario",
+      edad: "Debe ser una edad válida para enviar el formulario",
+      uni: "Debes escribir tu universidad para poder enviar el formulario",
+      nombre: "Debes escribir mínimo tu nombre para enviar el formulario",
+      tel: "Debe ser un número de whatsapp válido para enviar el formulario"
+    };
+    function letras(v) { var m = String(v || "").match(/\p{L}/gu); return m ? m.length : 0; }
+    function celular(v) {
+      var d = String(v || "").replace(/\D/g, "");
+      if (/^5939\d{8}$/.test(d)) d = "0" + d.slice(3);
+      return /^09\d{8}$/.test(d) ? d : "";
+    }
 
     function inicio() { if (!started) { started = Date.now(); ev("FormInicio", { formulario: SRC }); } }
     function campo(c) { if (hechos[c]) return; hechos[c] = 1; ev("FormCampo", { campo: c, paso: ORDEN[c], formulario: SRC }); }
@@ -1161,21 +1181,23 @@ fbq('track','PageView');
     form.addEventListener("pointerdown", inicio);
     form.addEventListener("change", function (e) {
       var n = e.target.name;
-      if (n === "presencial") campo("presencial");
+      if (n === "presencial") { campo("presencial"); setErr("presencial", ""); var fs = e.target.closest("fieldset"); if (fs) fs.classList.remove("mal"); }
       if (n === "consent") { if (e.target.checked) { campo("acepta"); setErr("acepta", ""); } }
     });
     form.addEventListener("focusout", function (e) {
       var n = e.target.name, v = String(e.target.value || "").trim();
       if (!v) return;
       if (n === "edad") campo("edad");
+      if (n === "universidad") campo("universidad");
       if (n === "nombre") campo("nombre");
       if (n === "whatsapp") campo("celular");
     });
     form.addEventListener("input", function (e) {
       var t = e.target;
-      if (t.name === "edad") { var d = t.value.replace(/\D/g, "").slice(0, 2); if (d !== t.value) t.value = d; }
-      if (t.name === "nombre") setErr("nombre", "", t);
-      if (t.name === "whatsapp") setErr("tel", "", t);
+      if (t.name === "edad") { var d = t.value.replace(/\D/g, "").slice(0, 2); if (d !== t.value) t.value = d; if (/^\d{2}$/.test(d)) setErr("edad", "", t); }
+      if (t.name === "universidad" && letras(t.value) >= 3) setErr("uni", "", t);
+      if (t.name === "nombre" && letras(t.value) >= 3) setErr("nombre", "", t);
+      if (t.name === "whatsapp" && celular(t.value)) setErr("tel", "", t);
     });
 
     if ("IntersectionObserver" in window) {
@@ -1203,21 +1225,25 @@ fbq('track','PageView');
       if (busy) return;
       inicio();
       if (form.web && form.web.value) return;
-      var nombre = form.nombre.value.trim().replace(/\s+/g, " "), tel = form.whatsapp.value.trim(), bad = null, faltan = [];
-      if (!nombre) { setErr("nombre", "Escribe tu nombre.", form.nombre); bad = bad || form.nombre; faltan.push("nombre"); } else setErr("nombre", "", form.nombre);
-      if (!/\d/.test(tel)) { setErr("tel", "Escribe tu número de celular.", form.whatsapp); bad = bad || form.whatsapp; faltan.push("celular"); } else setErr("tel", "", form.whatsapp);
+      var nombre = form.nombre.value.trim().replace(/\s+/g, " "), uni = form.universidad.value.trim().replace(/\s+/g, " "), edad = form.edad.value.trim(), tel = celular(form.whatsapp.value), bad = null, faltan = [];
+      var presEl = form.querySelector("input[name=presencial]:checked"), pres = presEl ? presEl.value : "";
+      var fsPres = form.querySelector("fieldset.campo");
+      if (!pres) { setErr("presencial", MSG.presencial); if (fsPres) fsPres.classList.add("mal"); bad = bad || form.querySelector("input[name=presencial]"); faltan.push("presencial"); } else { setErr("presencial", ""); if (fsPres) fsPres.classList.remove("mal"); }
+      if (!/^\d{2}$/.test(edad) || parseInt(edad, 10) < 10) { setErr("edad", MSG.edad, form.edad); bad = bad || form.edad; faltan.push("edad"); } else setErr("edad", "", form.edad);
+      if (letras(uni) < 3) { setErr("uni", MSG.uni, form.universidad); bad = bad || form.universidad; faltan.push("universidad"); } else setErr("uni", "", form.universidad);
+      if (letras(nombre) < 3) { setErr("nombre", MSG.nombre, form.nombre); bad = bad || form.nombre; faltan.push("nombre"); } else setErr("nombre", "", form.nombre);
+      if (!tel) { setErr("tel", MSG.tel, form.whatsapp); bad = bad || form.whatsapp; faltan.push("celular"); } else setErr("tel", "", form.whatsapp);
       if (!form.consent.checked) { setErr("acepta", "Marca la casilla para que podamos contactarte."); bad = bad || form.consent; faltan.push("acepta"); } else setErr("acepta", "");
       if (bad) { ev("FormFaltan", { campos: faltan.join(","), formulario: SRC }); bad.focus(); return; }
 
-      var presEl = form.querySelector("input[name=presencial]:checked"), pres = presEl ? presEl.value : "";
-      var edad = form.edad.value.trim(), n = parseInt(edad, 10);
+      var n = parseInt(edad, 10);
       var califica = pres === "si" && n >= 18 && n <= 26;
-      if (pres) campo("presencial"); if (edad) campo("edad"); campo("nombre"); campo("celular"); campo("acepta");
+      campo("presencial"); campo("edad"); campo("universidad"); campo("nombre"); campo("celular"); campo("acepta");
       ev("FormEnvio", { formulario: SRC });
       busy = true;
       var btn = form.querySelector("button[type=submit]"), txt = btn.innerHTML; btn.disabled = true; btn.textContent = "Enviando…";
       post({
-        accion: "lead", nombre: nombre, whatsapp: tel, edad: edad, presencial: pres, consentimiento: true,
+        accion: "lead", validado: 2, nombre: nombre, whatsapp: tel, edad: edad, universidad: uni, presencial: pres, consentimiento: true,
         utm_source: utm.utm_source, utm_medium: utm.utm_medium, utm_campaign: utm.utm_campaign,
         formulario: SRC, web: "", ua: String(navigator.userAgent || "").slice(0, 150),
         segundos: Math.round((Date.now() - (started || Date.now())) / 1000)
