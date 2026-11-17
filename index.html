@@ -1237,7 +1237,7 @@ fbq('track','PageView');
       if (bad) { ev("FormFaltan", { campos: faltan.join(","), formulario: SRC }); bad.focus(); return; }
 
       var n = parseInt(edad, 10);
-      var califica = pres === "si" && n >= 18 && n <= 26;
+      var esInst = (function (t) { t = t.toLowerCase().normalize("NFD").replace(/\p{M}/gu, ""); return !/\buniversidad\b/.test(t) && /\binstituto\b|\btecnologico\b|\bitb\b|\bistt?\b/.test(t); })(uni), califica = pres === "si" && n >= 18 && n <= 26 && !esInst;
       campo("presencial"); campo("edad"); campo("universidad"); campo("nombre"); campo("celular"); campo("acepta");
       ev("FormEnvio", { formulario: SRC });
       busy = true;
