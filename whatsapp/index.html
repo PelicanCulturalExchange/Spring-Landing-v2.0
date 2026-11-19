@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Habla con un asesor | Pelican Cultural Exchange</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#0e2430">
+<link rel="icon" type="image/png" sizes="64x64" href="../img/favicon.png">
+<style>
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url("../fonts/poppins-latin-400-normal.woff2") format("woff2")}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:800;font-display:swap;src:url("../fonts/poppins-latin-800-normal.woff2") format("woff2")}
+:root{--page:#0e2430;--ink:#0f3a4d;--neon:#70ff71;--wa:#25d366}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--page);color:#fff;font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{min-height:100vh;min-height:100dvh;display:flex;align-items:center;justify-content:center;padding:24px 16px}
+.card{width:100%;max-width:380px;background:#fff;color:var(--ink);border:3px solid var(--neon);border-radius:24px;padding:32px 24px;text-align:center}
+.logo{display:block;width:150px;height:auto;margin:0 auto 18px}
+h1{margin:0 0 8px;font-size:22px;line-height:1.25;font-weight:800}
+p{margin:0 0 20px;font-size:15px;line-height:1.5}
+.spin{width:36px;height:36px;margin:0 auto 20px;border-radius:50%;border:4px solid #d7e4ea;border-top-color:var(--wa);animation:g .9s linear infinite}
+@keyframes g{to{transform:rotate(360deg)}}
+.btn{display:block;width:100%;padding:16px;border-radius:14px;background:var(--wa);color:#0b2e1a;font-size:17px;font-weight:800;text-decoration:none}
+.btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.nota{margin:14px 0 0;font-size:13px;color:#4b6573}
+@media (prefers-reduced-motion:reduce){.spin{animation:none}}
+</style>
+<!-- Meta Pixel -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','965255158746620');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=965255158746620&ev=PageView&noscript=1"></noscript>
+<!-- End Meta Pixel -->
+</head>
+<body>
+<main>
+  <div class="card">
+    <img class="logo" src="../img/pelican-logo.webp" alt="Pelican Cultural Exchange" width="150">
+    <div class="spin" aria-hidden="true"></div>
+    <h1>Te estamos conectando con un asesor</h1>
+    <p>En un momento se abre WhatsApp para que hables con un asesor de Pelican sobre Work and Travel Spring.</p>
+    <a id="abrir" class="btn" href="https://wa.me/593995242576">Abrir WhatsApp</a>
+    <p class="nota">Si WhatsApp no se abre solo, toca el botón.</p>
+  </div>
+</main>
+<script>
+(function(){
+  /* Asesores: el visitante nuevo cae en uno al azar; si vuelve, le toca el mismo. */
+  var ASESORES = [
+    {ref: "WSP1", tel: "593984376064"}, /* Meli Aguilar */
+    {ref: "WSP2", tel: "593999826698"}, /* Mafer Bermeo */
+    {ref: "WSP3", tel: "593998735850"}, /* Alejo Pozo */
+    {ref: "WSP4", tel: "593995242576"}, /* Oficina */
+    {ref: "WSP5", tel: "593999897941"}  /* Adrian Velasco */
+  ];
+  var i = -1;
+  try { var g = parseInt(localStorage.getItem("pelican_wa_asesor"), 10); if (g >= 0 && g < ASESORES.length) i = g; } catch (_) {}
+  if (i < 0) { i = Math.floor(Math.random() * ASESORES.length); try { localStorage.setItem("pelican_wa_asesor", String(i)); } catch (_) {} }
+  var a = ASESORES[i];
+  var texto = "Hola, soy estudiante universitario presencial y quiero información de Work and Travel Spring (ref " + a.ref + ")";
+  var url = "https://wa.me/" + a.tel + "?text=" + encodeURIComponent(texto);
+  document.getElementById("abrir").href = url;
+  try { if (window.fbq) { fbq("track", "Contact", {content_name: "whatsapp_spring", asesor: a.ref}); fbq("trackCustom", "WhatsApp_" + a.ref); } } catch (_) {}
+  var listo = false;
+  function ir() { if (listo) return; listo = true; window.location.replace(url); }
+  /* Espera a que cargue el píxel (para que Meta cuente la visita) y luego abre WhatsApp. */
+  var t0 = Date.now();
+  (function esperar() {
+    var cargado = window.fbq && window.fbq.callMethod;
+    if (cargado) { setTimeout(ir, 400); return; }
+    if (Date.now() - t0 > 2500) { ir(); return; }
+    setTimeout(esperar, 100);
+  })();
+})();
+</script>
+</body>
+</html>
